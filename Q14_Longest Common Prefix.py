@@ -1,23 +1,21 @@
 def longestCommonPrefix(strs) -> str:
 
     new = ''
-    num = 0
 
     if not strs:
         print("")
 
-    for a in strs[0]:
+    for i in range(len(min(strs, key=len))):
         count = 0
-        for i in range(1, len(strs)):
+        for num in range(1, len(strs)):
+            if strs[0][i] == strs[num][i]:
+                count += 1
 
-            if a in strs[i] and num < len(strs[i]):
-                if strs[0][num] == strs[i][num]:
-                    count += 1
+        if count == len(strs) - 1:
+            new += strs[0][i]
 
-            if count == len(strs) - 1:
-                new += a
-
-        num += 1
+        else:
+            break
 
     if new:
         print(new)
@@ -27,4 +25,4 @@ def longestCommonPrefix(strs) -> str:
 
 if __name__ == '__main__':
 
-    longestCommonPrefix(["aca", "cba"])
+    longestCommonPrefix(["flower","flow","flight"])
